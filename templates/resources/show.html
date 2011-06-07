@@ -1,0 +1,268 @@
+{% extends "common/base.html" %}
+
+
+{% block html_head %}
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" /> 
+<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" /> 
+<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="/static/admin/css/ie.css" /><![endif]--> 
+ 
+<script type="text/javascript">window.__admin_media_prefix__ = "/static/admin/";</script> 
+ 
+<script type="text/javascript" src="/admin/jsi18n/"></script> 
+<script type="text/javascript" src="/static/admin/js/core.js"></script> 
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script> 
+<script type="text/javascript" src="/static/admin/js/jquery.min.js"></script> 
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script> 
+<script type="text/javascript" src="/static/admin/js/actions.min.js"></script> 
+<script type="text/javascript" src="/static/admin/js/SelectBox.js"></script> 
+<script type="text/javascript" src="/static/admin/js/SelectFilter2.js"></script> 
+<script type="text/javascript" src="/static/admin/js/calendar.js"></script> 
+<script type="text/javascript" src="/static/admin/js/admin/DateTimeShortcuts.js"></script> 
+<script type="text/javascript" src="/static/admin/js/collapse.min.js"></script> 
+ 
+{% endblock %}
+
+
+ 
+{% block content %}
+
+
+<div class="breadcrumbs"> 
+     <a href="../../../">Search results</a> &rsaquo;
+     {{ res.name }}
+</div> 
+ 
+    
+ 
+        
+ 
+    <!-- Content --> 
+    <div id="content" class="colM"> 
+        
+        <div id="content-main"> 
+ 
+ 
+
+ 
+<form enctype="multipart/form-data" action="" method="post" id="resource_form"><div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='ad42dc53c80a376fc21a8086cad089cc' /></div> 
+<div> 
+ 
+ 
+ 
+ 
+ 
+  <fieldset class="module aligned "> 
+    <h2>Resource</h2> 
+
+         <div class="form-row name"> 
+            
+            
+                <div> 
+                    
+                    
+                        <label for="id_name" class="required">Name:</label> 
+                        
+                            <p>{{ res.name }}</p>
+                        
+                    
+                    
+                </div> 
+            
+        </div> 
+    
+    
+        <div class="form-row url"> 
+            
+            
+                <div> 
+                    
+                    
+                        <label for="id_url" class="required">URL:</label> 
+                        
+		
+                            <p><a href="{{res.url}}">{{ res.url }}</a></p>
+                        
+                    
+                    
+                </div> 
+            
+        </div> 
+    
+   
+        <div class="form-row description"> 
+            
+            
+                <div> 
+                    
+                    
+                        <label for="id_description" class="required">Description:</label> 
+                        
+                            <p>{{ res.description }}</a>
+                        
+                    
+                    
+                </div> 
+            
+        </div> 
+    
+        <div class="form-row resource_type"> 
+            
+            
+                <div> 
+                    
+                    
+                        <label for="id_resource_type" class="required">Type:</label> 
+                        
+                       <p>{{ res.topics }}</p>
+                    
+                </div> 
+            
+        </div> 
+    
+        <div class="form-row level"> 
+            
+            
+                <div> 
+                    
+                    
+                        <label for="id_level" class="required">Level:</label> 
+                        
+			{% if res.level %}
+	                       <p>{{ res.level }}</p>
+			{% else %}
+	                       <p>Not defined</p>
+			{% endif %}
+                       
+                    
+                    
+                </div> 
+            
+        </div> 
+    
+        <div class="form-row topics"> 
+            
+            
+                <div> 
+                    
+                    
+                        <label for="id_topics" class="required">Topics:</label> 
+                        
+                       <p>{{ res.topics }}</p> 
+                    
+                    
+                </div> 
+            
+        </div> 
+    
+        <div class="form-row author"> 
+            
+            
+                <div> 
+                    
+                    
+                        <label for="id_author" class="required">Author:</label> 
+        		{% if res.author %}
+	                       <p>{{ res.author }}</p>
+			{% else %}
+	                       <p>Unknown</p>
+			{% endif %}
+                        
+                        
+                    
+                    
+                </div> 
+            
+        </div> 
+    
+   
+</fieldset> 
+ 
+ 
+  <fieldset class="module aligned collapse"> 
+    <h2>Advanced</h2> 
+    
+    
+   
+        <div class="form-row date"> 
+            
+            
+                <div> 
+                    
+                    
+                        <label for="id_date_0">Uploaded at:</label> 
+                        
+			<p>{{ res.date }}</p>
+                        
+                    
+                    
+                </div> 
+            
+        </div> 
+    
+   
+</fieldset> 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+<script type="text/javascript"> 
+(function($) {
+    var field = null;
+ 
+ 
+})(django.jQuery);
+</script> 
+ 
+ 
+</div> 
+</form></div> 
+ 
+        
+        <br class="clear" /> 
+    </div> 
+    <!-- END Content --> 
+ 
+<!-- END Container --> 
+</div> 
+
+
+
+
+
+{% load comments %}
+    <!-- Comment --> 
+    <div id="content" class="colM"> 
+
+
+        
+ 
+  <fieldset class="module aligned "> 
+    <h2>Comments</h2> 
+
+        <div class="form-row"> 
+		{% render_comment_list for res %}
+	</div>
+
+
+         <div class="form-row"> 
+            
+		<h1>Post a comment</h1>
+		{% render_comment_form for res %}
+	</div> 
+  </fieldset> 
+ 
+
+        
+        <br class="clear" /> 
+    </div> 
+    <!-- END Content --> 
+ 
+{% endblock %}
+

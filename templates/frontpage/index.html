@@ -1,0 +1,24 @@
+{% extends "common/base.html" %}
+
+
+{% block html_head %}
+	<link rel="stylesheet" type="text/css" href="/static/frontpage/css/style.css" />
+	<script type="text/javascript" src="/static/frontpage/js/script.js"></script>
+{% endblock %}
+
+
+ 
+{% block content %}
+<div class="fullcenter">
+<img src="static/frontpage/img/logo.png" align="middle" width="256" height="211"/>
+<form class="searchform" action="/search" method="get"> 
+	<input id="q" name="q" class="searchfield" type="text" value="Search for material..." onfocus="searchBarFocus()" onblur="searchBarBlur()" /> 
+	<input class="searchbutton" type="submit" value="Go" /> 
+</form> 
+<br />
+<div class="footer">
+	<center><a href="">about</a>  | <a href="">stanford university</a> | <a href="">contact</a> </center>
+</div>
+</div>
+{% endblock %}
+

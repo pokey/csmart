@@ -1,0 +1,93 @@
+	<!-- Header --> 
+	<div id="header"> 
+		<a href="/">
+		<div id="branding"> 
+		
+		<h1 id="site-name">csmart</h1> 
+ 
+		</div> 
+		</a>
+		
+		<div id="user-tools"> 
+	
+			{% if user.is_authenticated %}	
+				Logged in as 
+				<strong>{{ user.username }}</strong>.
+				<a href="/admin/password_change/?next={{ next|escape }}">Change password</a> /
+				<a href="/accounts/logout/?next={{ next|escape }}">Log out</a> 
+			{% else %}
+				<a class="jqModal" href="#" onClick="$('#dialog').jqmShow();">Register</a>
+				| 
+				Login
+				  <form action='/accounts/login/' method='post'>
+					{% csrf_token %}
+					<input type="text" name="username" id="username" value="user@example.com">
+					
+					<label for="password">Password:</label>
+					<input type="password" name="password" value="" id="password">
+
+					<input type="submit" value="login" />
+					<input type="hidden" name="next" value="{{ next|escape }}" />
+				  </form>
+			{% endif %}
+		</div> 
+	</div> 
+	<!-- END Header -->
+
+
+	<!-- Registration modal -->
+	<div class="jqmAlert" id="dialog">
+
+	<div class="jqmAlertWindow">
+		<div class="jqmAlertTitle clearfix">
+			<h1>Registration</h1><a href="#" class="jqmClose"><em>Close</em></a>
+		</div>
+	
+		<div class="jqmAlertContent">
+
+		<form id="registration_form" class="appnitro"  method="post" action="/accounts/register/">
+		{% csrf_token %}
+		<div class="form_description">
+			<h2>Create an account</h2>
+			<p></p>
+		</div>						
+		<ul >
+	
+		<li id="li_1" >
+		<label class="description" for="element_1">Email address </label>
+		<div>
+			<input id="username" name="username" class="element text medium" type="text" maxlength="30" value="user@example.com" size="30"/> 
+		</div><p class="guidelines" id="guide_1"><small>Your email address will be your username.</small></p> 
+		</li>		<li id="li_2" >
+		<label class="description" for="element_2">Password </label>
+		<div>
+			<input id="id_password1" name="password1" class="element text medium" type="password" maxlength="255" value=""/> 
+		</div><p class="guidelines" id="guide_2"><small>Choose a secure password.</small></p> 
+		</li>		<li id="li_3" >
+		<label class="description" for="element_3">Password Confirmation </label>
+		<div>
+			<input id="id_password2" name="password2" class="element text medium" type="password" maxlength="255" value=""/> 
+		</div><p class="guidelines" id="guide_3"><small>Enter the password as above, for verificaiton.</small></p> 
+		</li>
+		
+		<li class="buttons">
+			<input id="saveForm" class="button_text" type="submit" name="submit" value="Register!" />
+		</li>
+		</ul>
+		</form>
+<!--
+			<form action="/accounts/register/" method="post"> 
+				<p><label for="id_username">Email address:</label> <input id="id_username" type="text" name="username" maxlength="30" value="username@example.com" /> <span class="helptext">Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only.</span></p> 
+				<p><label for="id_password1">Password:</label> <input type="password" name="password1" id="id_password1" /></p> 
+				<p><label for="id_password2">Password confirmation:</label> <input type="password" name="password2" id="id_password2" /> <span class="helptext">Enter the same password as above, for verification.</span></p> 
+				<div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='ad42dc53c80a376fc21a8086cad089cc' /></div> 
+				<input type="hidden" name="next" value="{{ next|escape }}" />
+				<input type="submit" value="Create the account"> 
+
+			</form> 
+-->
+		</div>
+	</div>
+	</div>
+	<!-- END Registration modal -->
+

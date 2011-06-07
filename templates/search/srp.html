@@ -1,0 +1,51 @@
+{% extends "common/base.html" %}
+
+{% block html_head %}
+	<link rel="stylesheet" href="/static/search/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/static/frontpage/css/style.css" />
+	<script type="text/javascript" src="/static/frontpage/js/script.js"></script>
+{% endblock %}
+
+ 
+{% block content %}
+<center>
+<form class="searchform" action="/search" method="get">
+        <input id="q" name="q" class="searchfield" type="text" value="{{ q|escape }}" />
+        <input class="searchbutton" type="submit" value="Go" />
+</form>
+<br />
+<small>
+{% if rsp.response.numFound %}
+	About {{ rsp.response.numFound }} 
+ 	results in {{ queryTime }} secs
+{% else %}
+	No results found
+{% endif %}
+</small>
+</center>
+<div id="searchresults">
+<ol>
+{% for doc in rsp.response.docs %}
+	<li>
+
+		{% if doc.name %}
+			<p><b><a href="{{ doc.url }}">{{ doc.name }}</a></b>
+		{% else %}
+			<p><b><a href="{{ doc.url }}">Untitled document</a></b>
+		{% endif %}
+		<sup><a href="{% url resources.views.show resource_id=doc.id %}">Discuss</a></sup>
+
+		{% if doc.author %}
+			<br/><small>Created by <i>{{ doc.author }}</i></small>
+		{% endif %}
+
+		{% if doc.description %}
+			<br/><small>{{ doc.description|truncatewords:40 }}</small>
+		{% endif %}
+		</p>
+	</li>	
+{% endfor %}
+</ol>
+</div>
+{% endblock %}
+

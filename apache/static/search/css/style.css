@@ -1,0 +1,45 @@
+ol dl li {
+list-style-type:decimal;
+list-style-position: outside;
+font-size:60pt;
+position: relative;
+top: 70px;
+left: 65px;
+line-height:normal;
+color:#DDD;
+_color:#FFF;; /* show to IE */
+}
+ol dl li dt {
+_margin-top: -70px;
+}
+ol dl li dd {
+width: 400px;
+}
+ol dl li dt, ol dl li dd {
+_list-style-type:decimal;
+_list-style-position: outside;
+color:#111;
+font-size:0px;
+line-height:normal;
+font-size:small;
+position: relative;
+top: -70px;
+left: -70px;
+}
+dt {
+font-weight:bold;
+margin-top: 10px;
+margin-bottom: 5px;
+}
+dd {
+background-color: #eeeee7;
+padding: 7px;
+}
+
+
+/* LIST #2 */
+#searchresults { width:100%; }
+#searchresults ol { font-style:italic; font-family:Georgia, Times, serif; font-size:24px; color:#000000;  }
+#searchresults ol li { }
+#searchresults ol li p { padding:8px 40px; font-style:normal; font-family:Arial; font-size:13px; color:#222222; border-left: 1px solid #999; }
+#searchresults ol li p em { display:block;  }

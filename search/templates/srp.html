@@ -1,0 +1,48 @@
+<!DOCCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
+	<title>csmart</title> 
+	<link rel="stylesheet" href="/static/common/css/style.css" />
+	<link rel="stylesheet" href="/static/frontpage/css/style.css" />
+	<link rel="stylesheet" href="/static/search/css/style.css" />
+	<script type="text/javascript" src="/static/frontpage/js/script.js"></script>
+</head> 
+ 
+<body> 
+<center>
+<form class="searchform" action="/search" method="get">
+        <input id="q" name="q" class="searchfield" type="text" value="{{ q }}" />
+        <input class="searchbutton" type="submit" value="Go" />
+</form>
+<br />
+<small>About {{ rsp.response.numFound }} results in {{ qtime }} secs</small>
+</center>
+<div id="searchresults">
+<ol>
+{% for doc in rsp.response.docs %}
+	<li>
+
+		{% if doc.title.0 %}
+			<p><b><a href="{{ doc.attr_stream_name.0 }}">{{ doc.title.0 }}</a></b>
+		{% else %}
+			<p><b><a href="{{ doc.attr_stream_name.0 }}">Untitled document</a></b>
+		{% endif %}
+		[{{ doc.attr_stream_content_type.0 }}]<br />
+
+		{% if doc.author or doc.attr_created.0 %}
+			Created 
+			{% if doc.author %}
+				by <i>{{ doc.author }}</i>
+			{% endif %}
+			{% if doc.attr_created.0 %}
+				on {{ doc.attr_created.0 }}
+			{% endif %}
+		{% endif %}
+		</p>
+	</li>	
+{% endfor %}
+</ol>
+</div>
+</body>
+</html>

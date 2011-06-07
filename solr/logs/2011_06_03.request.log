@@ -1,0 +1,12 @@
+127.0.0.1 -  -  [03/06/2011:21:10:21 +0000] "GET /solr/select?wt=json&q=arrays HTTP/1.1" 200 4042 
+127.0.0.1 -  -  [03/06/2011:21:10:33 +0000] "GET /solr/select?wt=json&q=arrays+intro HTTP/1.1" 200 609 
+127.0.0.1 -  -  [03/06/2011:21:10:53 +0000] "GET /solr/select?wt=json&q=arrays+easy HTTP/1.1" 200 4811 
+127.0.0.1 -  -  [03/06/2011:21:11:29 +0000] "GET /solr/select?wt=json&q=arrays+basic HTTP/1.1" 200 4866 
+127.0.0.1 -  -  [03/06/2011:21:12:08 +0000] "GET /solr/select?wt=json&q=arrays+analogies HTTP/1.1" 200 133 
+127.0.0.1 -  -  [03/06/2011:21:12:15 +0000] "GET /solr/select?wt=json&q=arrays+representations HTTP/1.1" 200 3617 
+127.0.0.1 -  -  [03/06/2011:21:12:59 +0000] "GET /solr/select?wt=json&q=arrays+visuals HTTP/1.1" 200 3777 
+127.0.0.1 -  -  [03/06/2011:21:13:05 +0000] "GET /solr/select?wt=json&q=arrays+lessons HTTP/1.1" 200 818 
+127.0.0.1 -  -  [03/06/2011:21:13:53 +0000] "GET /solr/select?wt=json&q=arrays+visuals HTTP/1.1" 200 3777 
+127.0.0.1 -  -  [03/06/2011:21:13:57 +0000] "GET /solr/select?wt=json&q=arrays HTTP/1.1" 200 4042 
+127.0.0.1 -  -  [03/06/2011:21:18:38 +0000] "GET /solr/select?wt=json&q=maps+activity HTTP/1.1" 200 4945 
+127.0.0.1 -  -  [03/06/2011:21:25:02 +0000] "GET /solr/select?wt=json&q=recursion HTTP/1.1" 200 4726 
