@@ -1,4 +1,0 @@
-hello
-bye
-ok bye
-ok
