@@ -10,8 +10,15 @@ def index(request):
 
 	# get search terms and query search backend
 	q = request.GET.get('q')
-	if q and q != "":
-		backendQuery = "http://127.0.0.1:8983/solr/select?wt=json&q=" + quote_plus(q)
+
+	# result page no.
+	if 'start' in request.GET and request.GET.get('start') != "":
+		start = int(request.GET.get('start'))
+	else:
+		start = 0
+
+	if q and q != "" and start >= 0:
+		backendQuery = "http://127.0.0.1:8983/solr/select?wt=json&q=" + quote_plus(q) + "&start=" + str(start)
 		try:
 			conn = urlopen(backendQuery)
 			# interpret json response
@@ -24,10 +31,23 @@ def index(request):
 		rsp = '{}'
 		queryTime = 0
 
+	if start + 10 < int(rsp['response']['numFound']):
+		next = start +  10
+	else:
+		next = -1
+
+	if start - 10 >= 0:
+		prev = start - 10
+	else:
+		prev = -1
+
+
 	# render results
 	return render_to_response("search/srp.html", {
 		'q': q,
 		'queryTime': queryTime,
+		'prev': prev,
+		'next': next,
 		'rsp': rsp,
 	}, context_instance=RequestContext(request))
 

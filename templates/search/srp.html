@@ -24,7 +24,7 @@
 </small>
 </center>
 <div id="searchresults">
-<ol>
+<ul>
 {% for doc in rsp.response.docs %}
 	<li>
 
@@ -45,7 +45,24 @@
 		</p>
 	</li>	
 {% endfor %}
-</ol>
+</ul>
 </div>
+
+
+<center>
+{% if prev != -1 %}
+	<a href = "/search?q={{q|urlencode}}&start={{prev}}">&lt;&lt; Previous</a>
+{% endif %}
+{% if prev != -1 and next != -1 %}
+	|
+{% endif %}
+
+{% if next != -1 %}
+	<a href = "/search?q={{q|urlencode}}&start={{next}}">Next &gt;&gt;</a>
+{% endif %}
+</center>
+
+<br/>
+<br/>
 {% endblock %}
 
