@@ -1,2 +1,4 @@
 solr/solr/data/*
 *.pyc
+solr/logs/*
+solr/solr.log
