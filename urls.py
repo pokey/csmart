@@ -27,3 +27,8 @@ urlpatterns += patterns('',
     (r'^accounts/logout/$', logout),
     (r'^accounts/register/$', 'frontpage.views.register'),
 )
+
+urlpatterns += patterns('frontpage.views',
+	(r'^aboutus/$', 'aboutus'),
+	(r'^aboutcsmart/$', 'aboutcsmart'),
+)

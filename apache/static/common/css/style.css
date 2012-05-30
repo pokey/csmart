@@ -30,6 +30,13 @@ body {
 	color: #666666;
 }
 
+.pageTitle {
+	text-align: left;
+	font-size: 2.5em;
+	margin-left: 50px;
+	margin-top: 50px;
+}
+
 /* jqModal base Styling courtesy of;
   Brice Burgess <bhb@iceburg.net> */
 

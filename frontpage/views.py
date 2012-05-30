@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
+#from django.shortcuts import render_to_response
 
 from django.core.context_processors import csrf
 from django.template import RequestContext
@@ -27,3 +27,10 @@ def register(request):
     return render_to_response("registration/register.html", {
         'form': form,
     }, context_instance=RequestContext(request))
+
+def aboutus(request):
+    return render_to_response("frontpage/aboutus.html", {},  context_instance=RequestContext(request))
+
+def aboutcsmart(request):
+	return render_to_response("frontpage/aboutcsmart.html", {},  context_instance=RequestContext(request))
+

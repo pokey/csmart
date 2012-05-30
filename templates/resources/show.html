@@ -4,6 +4,7 @@
 {% block html_head %}
 <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" /> 
 <link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" /> 
+<link rel="stylesheet" type="text/css" href="/static/search/css/style.css" /> 
 <!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="/static/admin/css/ie.css" /><![endif]--> 
  
 <script type="text/javascript">window.__admin_media_prefix__ = "/static/admin/";</script> 
@@ -19,211 +20,96 @@
 <script type="text/javascript" src="/static/admin/js/calendar.js"></script> 
 <script type="text/javascript" src="/static/admin/js/admin/DateTimeShortcuts.js"></script> 
 <script type="text/javascript" src="/static/admin/js/collapse.min.js"></script> 
- 
+<script type="text/javascript" src="/static/search/js/script.js"></script> 
+
 {% endblock %}
 
 
  
 {% block content %}
 
-
 <div class="breadcrumbs"> 
      <a href="../../../">Search results</a> &rsaquo;
      {{ res.name }}
 </div> 
- 
-    
- 
-        
- 
     <!-- Content --> 
     <div id="content" class="colM"> 
-        
         <div id="content-main"> 
- 
- 
 
- 
 <form enctype="multipart/form-data" action="" method="post" id="resource_form"><div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='ad42dc53c80a376fc21a8086cad089cc' /></div> 
 <div> 
- 
- 
- 
- 
- 
   <fieldset class="module aligned "> 
     <h2>Resource</h2> 
-
-         <div class="form-row name"> 
-            
-            
+         <div class="form-row name">    
                 <div> 
-                    
-                    
                         <label for="id_name" class="required">Name:</label> 
-                        
                             <p>{{ res.name }}</p>
-                        
-                    
-                    
                 </div> 
-            
-        </div> 
-    
-    
+        </div>
         <div class="form-row url"> 
-            
-            
                 <div> 
-                    
-                    
                         <label for="id_url" class="required">URL:</label> 
-                        
-		
                             <p><a href="{{res.url}}">{{ res.url }}</a></p>
-                        
-                    
-                    
                 </div> 
-            
-        </div> 
-    
-   
+        </div>
         <div class="form-row description"> 
-            
-            
                 <div> 
-                    
-                    
                         <label for="id_description" class="required">Description:</label> 
-                        
                             <p>{{ res.description }}</a>
-                        
-                    
-                    
                 </div> 
-            
         </div> 
-    
         <div class="form-row resource_type"> 
-            
-            
                 <div> 
-                    
-                    
                         <label for="id_resource_type" class="required">Type:</label> 
-                        
                        <p>{{ res.topics }}</p>
-                    
                 </div> 
-            
         </div> 
-    
         <div class="form-row level"> 
-            
-            
                 <div> 
-                    
-                    
                         <label for="id_level" class="required">Level:</label> 
-                        
 			{% if res.level %}
 	                       <p>{{ res.level }}</p>
 			{% else %}
 	                       <p>Not defined</p>
 			{% endif %}
-                       
-                    
-                    
                 </div> 
             
         </div> 
-    
         <div class="form-row topics"> 
-            
-            
                 <div> 
-                    
-                    
                         <label for="id_topics" class="required">Topics:</label> 
-                        
                        <p>{{ res.topics }}</p> 
-                    
-                    
                 </div> 
-            
         </div> 
-    
         <div class="form-row author"> 
-            
-            
                 <div> 
-                    
-                    
                         <label for="id_author" class="required">Author:</label> 
         		{% if res.author %}
 	                       <p>{{ res.author }}</p>
 			{% else %}
 	                       <p>Unknown</p>
 			{% endif %}
-                        
-                        
-                    
-                    
                 </div> 
-            
         </div> 
-    
-   
 </fieldset> 
- 
- 
-  <fieldset class="module aligned collapse"> 
+  
+<fieldset class="module aligned collapse"> 
     <h2>Advanced</h2> 
-    
-    
-   
         <div class="form-row date"> 
-            
-            
                 <div> 
-                    
-                    
                         <label for="id_date_0">Uploaded at:</label> 
-                        
 			<p>{{ res.date }}</p>
-                        
-                    
-                    
                 </div> 
-            
         </div> 
-    
-   
 </fieldset> 
- 
- 
- 
- 
- 
- 
- 
-
- 
- 
  
 <script type="text/javascript"> 
 (function($) {
     var field = null;
- 
- 
 })(django.jQuery);
 </script> 
- 
- 
 </div> 
 </form></div> 
- 
         
         <br class="clear" /> 
     </div> 
@@ -232,37 +118,45 @@
 <!-- END Container --> 
 </div> 
 
-
-
-
-
 {% load comments %}
     <!-- Comment --> 
     <div id="content" class="colM"> 
-
-
-        
- 
   <fieldset class="module aligned "> 
-    <h2>Comments</h2> 
-
-        <div class="form-row"> 
+    <h2>Rate and Comment</h2> 
+		<div class="form-row"> 
+			<h1>Rate This Resource</h1>
+				<div id="rateMe" title="Current Rating: No Rating">
+		    		<a onclick="rateIt(this)" id="_1" title="Ehh..." onmouseover="rating(this)" onmouseout="off(this)"></a>
+		    		<a onclick="rateIt(this)" id="_2" title="I've Seen Better" onmouseover="rating2(this)" onmouseout="off(this)"></a>
+		    		<a onclick="rateIt(this)" id="_3" title="Passing" onmouseover="rating3(this)" onmouseout="off(this)"></a>
+					<a onclick="rateIt(this)" id="_4" title="A+ for Effort" onmouseover="rating4(this)" onmouseout="off(this)"></a>
+					<a onclick="rateIt(this)" id="_5" title="Fantastical!" onmouseover="rating5(this)" onmouseout="off(this)"></a>
+				</div>
+			<span id="rateStatus">Current Rating: No Rating</span>
+			<span id="ratingSaved">You rated this resource </span>
+		</div>
+		<div class="form-row"> 
+	<h1>Post a Comment</h1>
+		<form>	
+			<label>Name: </label><input type="text" name="name" padding-left:20px/><br />
+			<label>Email: </label><input type="text" name="email" /><br />
+			<label>Comment: </label><textarea name="comment" rows=6 cols=40>
+			</textarea> <br/>
+			<input type="submit">
+			<input type="reset">
+		</form>
+		</div>
+		
+        <!-- <div class="form-row"> 
 		{% render_comment_list for res %}
 	</div>
-
-
          <div class="form-row"> 
-            
 		<h1>Post a comment</h1>
 		{% render_comment_form for res %}
 	</div> 
   </fieldset> 
- 
-
-        
         <br class="clear" /> 
-    </div> 
+    </div> -->
     <!-- END Content --> 
- 
 {% endblock %}
 

@@ -1,5 +1,0 @@
-127.0.0.1 -  -  [31/05/2011:23:42:15 +0000] "GET /solr/select?wt=json&q=popeye HTTP/1.1" 200 123 
-127.0.0.1 -  -  [31/05/2011:23:46:17 +0000] "GET /solr/select?wt=json&q=java HTTP/1.1" 200 4972 
-127.0.0.1 -  -  [31/05/2011:23:46:29 +0000] "GET /solr/select?wt=json&q=java+thinking HTTP/1.1" 200 3693 
-127.0.0.1 -  -  [31/05/2011:23:47:27 +0000] "GET /solr/select?wt=json&q=%22thinking+in+java%22+ HTTP/1.1" 200 356 
-127.0.0.1 -  -  [31/05/2011:23:47:40 +0000] "GET /solr/select?wt=json&q=topics%3Aall HTTP/1.1" 200 3271 

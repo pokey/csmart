@@ -6,19 +6,32 @@
 	<script type="text/javascript" src="/static/frontpage/js/script.js"></script>
 {% endblock %}
 
-
  
 {% block content %}
 <div class="fullcenter">
-<img src="static/frontpage/img/logo.png" align="middle" width="256" height="211"/>
+<img src="/static/frontpage/img/csmart5.jpg" align="middle" width="280" height="250"/>
 <form class="searchform" action="/search" method="get"> 
 	<input id="q" name="q" class="searchfield" type="text" value="Search for material..." onfocus="searchBarFocus()" onblur="searchBarBlur()" /> 
 	<input class="searchbutton" type="submit" value="Go" /> 
 </form> 
-<br />
-<div class="footer">
-	<center><a href="">about</a>  | <a href="">stanford university</a> | <a href="">contact</a> </center>
-</div>
-</div>
-{% endblock %}
+<br/>
 
+<div class="footer">
+	<center><a href="aboutcsmart">about csmart</a>  | <a href="http://www.stanford.edu">stanford university</a>
+	  | <a href="aboutus">about us</a>  |  <a href="">contact</a></center>
+</div>
+<br/>
+<br/>
+<br/>
+
+<font size = "1pt">
+This material is based upon work supported, in part, by the National
+Science Foundation under <a href="http://nsf.gov/awardsearch/showAward.do?AwardNumber=1057270">Grant CNS-1057270</a>. Any opinions, findings,
+and conclusions or recommendations expressed in this material are those of
+the author(s) and do not necessarily reflect the views of the National
+Science Foundation.
+</font>
+</div>
+
+
+{% endblock %}

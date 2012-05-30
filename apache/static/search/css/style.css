@@ -36,6 +36,9 @@ background-color: #eeeee7;
 padding: 7px;
 }
 
+ul li{
+	font-size: 10pt;
+}
 
 /* LIST #2 */
 #searchresults { width:100%; }
@@ -43,3 +46,30 @@ padding: 7px;
 #searchresults ol li { }
 #searchresults ol li p { padding:8px 40px; font-style:normal; font-family:Arial; font-size:13px; color:#222222; border-left: 1px solid #999; }
 #searchresults ol li p em { display:block;  }
+
+
+#rateStatus{float:left; clear:both; width:100%; height:20px; }
+#rateMe{float:left; clear:both; width:100%; height:auto; padding:0px; margin:10px;}
+#rateMe li{float:left;list-style:none;}
+#rateMe li a:hover,
+#rateMe .on{background:url(../img/lightyellowstar.jpg) no-repeat; }
+#rateMe .on2{background:url(../img/yellowstar.jpg) no-repeat; }
+#rateMe .on3{background:url(../img/orangestar.png) no-repeat; }
+#rateMe .on4{background:url(../img/pinkstar.png) no-repeat; }
+#rateMe .on5{background:url(../img/redstar.jpg) no-repeat; }
+#rateMe a{float:left;background:url(../img/graystar.png) no-repeat; width:25px; height:25px;}
+#ratingSaved{display:none;}
+.saved{color:red; }
+
+label input {
+    display: block;
+    float: left;
+    margin-bottom: 10px;
+}
+        
+label {
+    text-align: left;
+    width: 100px;
+    padding-right: 20px;
+	margin-left: 10px;
+}
