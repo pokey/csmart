@@ -118,35 +118,63 @@
 <!-- END Container --> 
 </div> 
 
+<div id="content" class="colM"> 
+   <fieldset class="module aligned "> 
+      <h2>Reviews</h2> 
+         {% for review in reviews %}
+         <div class="form-row"> 
+            <div class="rateMe">
+               {% for i in review.ratingHack %}
+               <span class="star on{{ review.rating }}"></span>
+               {% endfor %}
+            </div>
+            <div class="comment_name">
+               <span class="comment_name_name">{{ review.name }}</span>
+               <span class="comment_name_email">{{ review.email }}</span>
+               <span class="comment_name_date">{{ review.date }}</span>
+            </div>
+            <div class="comment_comment">{{ review.comment }}</div>
+         </div>
+         {%  endfor %}
+   </fieldset> 
+</div>
 {% load comments %}
-    <!-- Comment --> 
-    <div id="content" class="colM"> 
-  <fieldset class="module aligned "> 
-    <h2>Rate and Comment</h2> 
-		<div class="form-row"> 
-			<h1>Rate This Resource</h1>
-				<div id="rateMe" title="Current Rating: No Rating">
-		    		<a onclick="rateIt(this)" id="_1" title="Ehh..." onmouseover="rating(this)" onmouseout="off(this)"></a>
-		    		<a onclick="rateIt(this)" id="_2" title="I've Seen Better" onmouseover="rating2(this)" onmouseout="off(this)"></a>
-		    		<a onclick="rateIt(this)" id="_3" title="Passing" onmouseover="rating3(this)" onmouseout="off(this)"></a>
-					<a onclick="rateIt(this)" id="_4" title="A+ for Effort" onmouseover="rating4(this)" onmouseout="off(this)"></a>
-					<a onclick="rateIt(this)" id="_5" title="Fantastical!" onmouseover="rating5(this)" onmouseout="off(this)"></a>
-				</div>
-			<span id="rateStatus">Current Rating: No Rating</span>
-			<span id="ratingSaved">You rated this resource </span>
-		</div>
-		<div class="form-row"> 
-	<h1>Post a Comment</h1>
-		<form>	
-			<label>Name: </label><input type="text" name="name" padding-left:20px/><br />
-			<label>Email: </label><input type="text" name="email" /><br />
-			<label>Comment: </label><textarea name="comment" rows=6 cols=40>
-			</textarea> <br/>
-			<input type="submit">
-			<input type="reset">
-		</form>
-		</div>
-		
+<!-- Comment --> 
+<div id="content" class="colM"> 
+   <fieldset class="module aligned "> 
+      <h2>Rate and Comment</h2> 
+      <div class="form-row"> 
+         <h1>Rate This Resource</h1>
+         <form name="rate" method="post">	
+            {% csrf_token %}
+            <div class="rateMe" title="Current Rating: No Rating">
+               <a onclick="rateIt(this)" id="_1" title="Ehh..."
+                  onmouseover="rating(this, 1)" onmouseout="off(this)"
+                  class="star"></a>
+               <a onclick="rateIt(this)" id="_2" title="I've Seen Better"
+                  onmouseover="rating(this, 2)" onmouseout="off(this)"
+                  class="star"></a>
+               <a onclick="rateIt(this)" id="_3" title="Passing"
+                  onmouseover="rating(this, 3)" onmouseout="off(this)"
+                  class="star"></a>
+               <a onclick="rateIt(this)" id="_4" title="A+ for Effort"
+                  onmouseover="rating(this, 4)" onmouseout="off(this)"
+                  class="star"></a>
+               <a onclick="rateIt(this)" id="_5" title="Fantastical!"
+                  onmouseover="rating(this, 5)" onmouseout="off(this)"
+                  class="star"></a>
+            </div>
+            <label>Name: </label><input type="text" name="name" padding-left:20px/><br />
+            <label>Email: </label><input type="text" name="email" /><br />
+            <label>Comment: </label><textarea name="comment" rows=6 cols=40>
+            </textarea> <br/>
+            <input type="hidden" name="value" id="ratingInput"/>
+            <input type="submit">
+         </form>
+      </div>
+   </fieldset> 
+</div>
+
         <!-- <div class="form-row"> 
 		{% render_comment_list for res %}
 	</div>
