@@ -2,9 +2,10 @@
 import os
 os.environ['DJANGO_SETTINGS_MODULE'] = 'csmart_site.settings'
 import sys
-sys.path.append('/afs/cs.stanford.edu/u/bipins/scratch1/csmart/')
-sys.path.append('/afs/cs.stanford.edu/u/bipins/scratch1/csmart/csmart_site/')
-from resources.models import Resource
+csmartPath = os.environ['CSMART_PATH']
+sys.path.append(csmartPath)
+sys.path.append(csmartPath + 'csmart_site/')
+from resources.models import Resource, Review
 from django.contrib.comments.models import Comment
 from django.utils.encoding import smart_str, smart_unicode
 import xml.dom.minidom
@@ -13,7 +14,7 @@ from urllib2 import *
 import re
 
 
-DIR =  '/afs/cs.stanford.edu/u/bipins/scratch1/csmart/csmart_site/solr/scripts/'
+DIR = csmartPath + 'csmart_site/solr/scripts/'
 
 def createSolrXMLDocument():
 
@@ -72,6 +73,12 @@ def main():
 			comments = Comment.objects.for_model(Resource).filter(object_pk=r.pk)
 			for comment in comments.values():
 				c = createFieldElement(myxml, "comment", comment["comment"])
+				doc.appendChild(c)
+
+			# extract and add reviews
+       			reviews = Review.objects.filter(resource__pk=r.pk)
+                        for review in reviews:
+				c = createFieldElement(myxml, "review", review.comment)
 				doc.appendChild(c)
 
 			# download and parse document with Tika
