@@ -35,7 +35,7 @@ class Review(models.Model):
 	rating		= models.IntegerField('rating (1 to 5)')
 	comment		= models.TextField('user comment')
 	name 		= models.CharField('name', max_length=500)
-	email		= models.EmailField('user email')
+	email		= models.EmailField('user email', blank=True)
 	date		= models.DateTimeField('uploaded at', auto_now_add=True)
 
 
@@ -46,4 +46,4 @@ class ReviewForm(forms.Form):
 	name 		= forms.CharField(max_length=500)
 	value		= forms.IntegerField(min_value=1, max_value=5)
 	comment		= forms.CharField()
-	email		= forms.EmailField()
+	email		= forms.EmailField(required=False)

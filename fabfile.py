@@ -89,5 +89,11 @@ def restart():
    sudo("service solr restart")
    # FixMe: [correctness] Test this, remembering to change solrService path
 
+def deploy():
+   # FixMe: [correctness] Use with cd bipins csmart_site
+   run("git pull origin master")
+   run("python manage.py syncdb")
+   sudo("service httpd restart")
+
 def test():
    run("echo `pwd`")

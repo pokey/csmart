@@ -415,6 +415,7 @@
    <field name="title" type="text" indexed="true" stored="true"/>
    <field name="description" type="text" indexed="true" stored="true"/>
    <field name="comments" type="text" indexed="true" stored="true"/>
+   <field name="review" type="text" indexed="true" stored="true" multiValued="true"/>
    <field name="author" type="textgen" indexed="true" stored="true"/>
    <field name="keywords" type="textgen" indexed="true" stored="true"/>
    <field name="resource_type" type="string" indexed="true" stored="true"/>
@@ -494,6 +495,7 @@
    <copyField source="title" dest="all"/>
    <copyField source="description" dest="all"/>
    <copyField source="comments" dest="all"/>
+   <copyField source="review" dest="all"/>
    <copyField source="author" dest="all"/>
    <copyField source="keywords" dest="all"/>
    <copyField source="resource_type" dest="all"/>
