@@ -16,6 +16,8 @@ def initialSetup():
    # FixMe: [correctness] Install mysql-python
    # FixMe: [correctness] Install utils (remembering to enter empty username
    # and password
+   # FixMe: [correctness] Install daemonize:
+   # http://software.clapper.org/daemonize/
    # FixMe: [correctness] Disable SELinux?
    # FixMe: [correctness] Set up iptables to accept incoming requests on port
    # 80
@@ -94,6 +96,7 @@ def deploy():
    run("git pull origin master")
    run("python manage.py syncdb")
    sudo("service httpd restart")
+   sudo("service solr restart")
 
 def test():
    run("echo `pwd`")
